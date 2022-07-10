@@ -1,7 +1,9 @@
 import React from "react";
 
+import Router from "./router/Router";
+
 function App() {
-  return <h1>Learn Spanish</h1>;
+  return <Router />;
 }
 
 export default App;
