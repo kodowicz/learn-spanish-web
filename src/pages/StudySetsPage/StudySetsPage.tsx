@@ -1,7 +1,7 @@
 import React from "react";
 import { useNavigate, generatePath } from "react-router-dom";
 
-import { paths } from "../../router/paths";
+import { paths } from "@/router/paths";
 
 function StudySetsPage() {
   const studySets: string[] = ["1", "2", "3", "4"];

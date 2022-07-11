@@ -1,6 +1,6 @@
 import React from "react";
 
-import { HomePage, StudySetsPage, StudySetPage } from "../pages";
+import { HomePage, StudySetsPage, StudySetPage } from "@/pages";
 import { RouteItem } from "./types";
 import { paths } from "./paths";
 

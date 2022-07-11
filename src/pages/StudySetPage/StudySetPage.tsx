@@ -1,7 +1,7 @@
 import React from "react";
 import { useParams, useNavigate } from "react-router-dom";
 
-import { paths } from "../../router/paths";
+import { paths } from "@/router/paths";
 
 function StudySetPage() {
   const { id } = useParams();
