@@ -1,6 +1,5 @@
 pre-commit:
   commands:
     lint:
-      files: git diff --name-only --staged
-      glob: "./src/**/*.{js,jsx,ts,tsx}"
-      run: npm run lint {files}
+      glob: "*.{ts,jsx,tsx}"
+      run: npm run lint {staged_files}
