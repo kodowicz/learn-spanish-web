@@ -40,6 +40,7 @@ module.exports = {
       'error',
       'always'
     ],
-    'react/react-in-jsx-scope': 'off'
+    'react/react-in-jsx-scope': 'off',
+    'tailwindcss/no-custom-classname': ['warn', {config: 'tailwind.config.cjs'}]
   }
 };

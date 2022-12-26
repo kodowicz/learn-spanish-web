@@ -5,7 +5,14 @@ module.exports = {
     './src/**/*.{js,ts,jsx,tsx}',
   ],
   theme: {
-    extend: {},
+    extend: {
+      backgroundColor: {
+        'purple': 'rgb(98, 0, 238)'
+      },
+      backgroundImage: {
+        'confetti': 'url(\'/confetti.svg\')'
+      }
+    },
   },
   plugins: [],
 };
