@@ -1,3 +1,11 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+body {
+  @apply bg-purple;
+}
+
+html, body, #root, #root>div {
+  height: 100%
+}
