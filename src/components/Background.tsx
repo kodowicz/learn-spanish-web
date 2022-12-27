@@ -17,7 +17,12 @@ export function Background({ children }: BackgroundProps) {
   const onBackgroundClick = (e: React.MouseEvent<HTMLDivElement, MouseEvent>) => {
     const { clientX, clientY } = e;
 
-    const doesClickExist = clickPositions.some(position => position.x === clientX && position.y === clientY);
+    const doesClickExist = clickPositions.some(position => {
+      const isXClicked = position.x - INDICATOR_SIZE/2 <= clientX && clientX <= position.x + INDICATOR_SIZE/2;
+      const isYClicked = position.y - INDICATOR_SIZE/2 <= clientY && clientY <= position.y + INDICATOR_SIZE/2;
+
+      return isXClicked && isYClicked;
+    });
 
     if (doesClickExist) return;
 
