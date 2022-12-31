@@ -1,27 +1,17 @@
-import { lazy } from 'react';
 import { QueryClient, QueryClientProvider } from '@tanstack/react-query';
-import { ReactLocation, Router, Outlet } from '@tanstack/react-location';
+import {
+  RouterProvider,
+} from '@tanstack/react-router';
 
 import './index.css';
-import { Background } from '@/components/Background';
-import { Layout } from './components/Layout';
+import { router } from './router';
 
 const queryClient = new QueryClient();
-
-const location = new ReactLocation();
-
-const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
 
 function App() {
   return (
     <QueryClientProvider client={queryClient}>
-      <Background>
-        <Layout>
-          <Router location={location} routes={[{ path: '/', element: <Home /> }]}>
-            <Outlet />
-          </Router>
-        </Layout>
-      </Background>
+      <RouterProvider router={router} />
     </QueryClientProvider>
   );
 }
