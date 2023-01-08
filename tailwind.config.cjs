@@ -7,7 +7,8 @@ module.exports = {
   theme: {
     extend: {
       backgroundColor: {
-        'purple': 'rgb(98, 0, 238)'
+        'purple': 'rgb(98, 0, 238)',
+        'mobile-menu': 'rgba(52, 13, 108, 0.7)'
       },
       backgroundImage: {
         'confetti': 'url(\'/confetti.svg\')'
