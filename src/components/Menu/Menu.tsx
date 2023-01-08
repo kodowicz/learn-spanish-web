@@ -37,14 +37,24 @@ export function Menu() {
 
   useEffect(() => {
     if (displayFullScreenMenu && !displayMobileNav) {
-      setFullScreenMenuVisible(false);
+      handleFullScreenMenuVisibility(false);
     }
   }, [displayFullScreenMenu, displayMobileNav]);
+
+  const handleFullScreenMenuVisibility = (isVisible: boolean) => {
+    if (isVisible) {
+      document.body.classList.add('overflow-hidden');
+    } else {
+      document.body.classList.remove('overflow-hidden');
+    }
+
+    setFullScreenMenuVisible(isVisible);
+  };
 
   return (
     <div>
       <header
-        className="fixed inset-x-0 top-0 z-10 flex h-[64px] items-center justify-center px-4 text-slate-900 transition-colors md:px-8"
+        className="fixed inset-x-0 top-0 z-10 flex h-[54px] items-center justify-center px-4 text-slate-900 transition-colors md:h-[60px] md:px-8"
         style={{
           backgroundColor: !displayFullScreenMenu ? '#ffffff' : undefined,
           color: !displayFullScreenMenu ? '#0f172a' : '#ffffff',
@@ -59,7 +69,7 @@ export function Menu() {
               <Hamburger
                 color={!displayFullScreenMenu ? '#0f172a' : '#ffffff'}
                 toggled={displayFullScreenMenu}
-                toggle={setFullScreenMenuVisible}
+                onToggle={handleFullScreenMenuVisibility}
               />
             </div>
           </>
@@ -78,7 +88,9 @@ export function Menu() {
             className="bg-mobile-menu absolute inset-x-0 top-0 h-screen w-screen"
           >
             <div className="mt-60 text-white">
-              <MenuLinks onLinkClick={() => setFullScreenMenuVisible(false)} />
+              <MenuLinks
+                onLinkClick={() => handleFullScreenMenuVisibility(false)}
+              />
             </div>
           </motion.div>
         )}

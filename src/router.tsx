@@ -20,7 +20,7 @@ const rootRoute = createRouteConfig({
     <div>
       <Background>
         <Menu />
-        <div className="mt-[64px] h-full overflow-scroll">
+        <div className="mt-[54px] h-full overflow-scroll md:mt-[60px]">
           <Layout>
             <Outlet />
           </Layout>
