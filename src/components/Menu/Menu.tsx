@@ -62,7 +62,7 @@ export function Menu() {
       >
         {displayMobileNav ? (
           <>
-            <span className="text-2xl font-semibold uppercase">
+            <span className="text-xl font-semibold uppercase">
               {getRouteName(currentRoute)}
             </span>
             <div className="absolute right-4">
@@ -70,6 +70,7 @@ export function Menu() {
                 color={!displayFullScreenMenu ? '#0f172a' : '#ffffff'}
                 toggled={displayFullScreenMenu}
                 onToggle={handleFullScreenMenuVisibility}
+                size={28}
               />
             </div>
           </>
@@ -85,7 +86,7 @@ export function Menu() {
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
             transition={{ duration: 0.1 }}
-            className="bg-mobile-menu absolute inset-x-0 top-0 h-screen w-screen"
+            className="bg-mobile-menu fixed inset-x-0 top-0 h-screen w-screen"
           >
             <div className="mt-60 text-white">
               <MenuLinks

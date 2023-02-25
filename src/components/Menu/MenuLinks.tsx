@@ -48,9 +48,9 @@ type MenuButtonProps = {
 function MenuButton({ label, path, onClick }: MenuButtonProps) {
   return (
     <motion.div
-      className="mb-10 text-2xl font-semibold antialiased last:mr-0 md:mb-0 md:mr-10 md:text-xl"
+      className="mb-10 text-xl font-semibold antialiased last:mr-0 md:mb-0 md:mr-10 md:text-lg"
       whileHover={
-        window.innerWidth < 768 ? { translateX: 3 } : { translateY: -3 }
+        window.innerWidth < 768 ? { translateX: 2 } : { translateY: -2 }
       }
       transition={{ duration: 0.2 }}
     >

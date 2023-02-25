@@ -1,10 +1,6 @@
 import { lazy } from 'react';
 
-import {
-  Outlet,
-  createReactRouter,
-  createRouteConfig,
-} from '@tanstack/react-router';
+import { Outlet, RootRoute, Route, Router } from '@tanstack/react-router';
 
 import { Background } from '@/components/Background';
 import { Layout } from '@/components/Layout';
@@ -15,12 +11,12 @@ const Home = lazy(() =>
   import('./pages/Home').then((module) => ({ default: module.Home }))
 );
 
-const rootRoute = createRouteConfig({
+const rootRoute = new RootRoute({
   component: () => (
     <div>
       <Background>
         <Menu />
-        <div className="mt-[54px] h-full overflow-scroll md:mt-[60px]">
+        <div className="mt-[54px] h-full overflow-scroll md:mt-[80px]">
           <Layout>
             <Outlet />
           </Layout>
@@ -30,39 +26,43 @@ const rootRoute = createRouteConfig({
   ),
 });
 
-const indexRoute = rootRoute.createRoute({
+const indexRoute = new Route({
+  getParentRoute: () => rootRoute,
   path: '/',
   component: Home,
   loader: ensurePublicSets,
   id: 'Home',
 });
 
-const searchRoute = rootRoute.createRoute({
+const searchRoute = new Route({
+  getParentRoute: () => rootRoute,
   path: '/search',
   component: Home,
   id: 'Search',
 });
 
-const createRoute = rootRoute.createRoute({
+const createRoute = new Route({
+  getParentRoute: () => rootRoute,
   path: '/create',
   component: Home,
   id: 'Create',
 });
 
-const profileRoute = rootRoute.createRoute({
+const profileRoute = new Route({
+  getParentRoute: () => rootRoute,
   path: '/profile',
   component: Home,
   id: 'Profile',
 });
 
-const routeConfig = rootRoute.addChildren([
+const routeTree = rootRoute.addChildren([
   indexRoute,
   searchRoute,
   createRoute,
   profileRoute,
 ]);
 
-export const router = createReactRouter({ routeConfig });
+export const router = new Router({ routeTree });
 
 declare module '@tanstack/react-router' {
   interface RegisterRouter {
