@@ -8,6 +8,7 @@ import {
 
 import { Background } from '@/components/Background';
 import { Layout } from './components/Layout';
+import { ensurePublicSets } from '@/queries/usePublicSets';
 
 const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
 
@@ -26,6 +27,7 @@ const rootRoute = createRouteConfig({
 const indexRoute = rootRoute.createRoute({
   path: '/',
   component: Home,
+  loader: ensurePublicSets
 });
 
 const routeConfig = rootRoute.addChildren([indexRoute]);
