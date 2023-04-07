@@ -2,9 +2,9 @@ import { useEffect, useState } from 'react';
 import { AnimatePresence, motion } from 'framer-motion';
 import { MenuLinks } from './MenuLinks';
 import { Fade as Hamburger } from 'hamburger-react';
-import { useRouter } from '@tanstack/react-router';
 import cx from 'classnames';
 import color from 'tailwindcss/colors';
+import { useLocation } from 'react-router-dom';
 
 export const MOBILE_BREAKPOINT = 768;
 
@@ -22,8 +22,7 @@ export function Menu() {
     window.innerWidth < MOBILE_BREAKPOINT
   );
 
-  const router = useRouter();
-  const currentRoute = router.history.location.pathname;
+  const currentRoute = useLocation().pathname;
 
   useEffect(() => {
     const handleResize = () => {
@@ -61,8 +60,7 @@ export function Menu() {
         className={cx(
           'fixed inset-x-0 top-0 z-10 flex h-[54px] items-center justify-center px-4 text-slate-900 transition-colors md:h-[60px] md:px-8',
           {
-            'bg-white': displayFullScreenMenu === false,
-            'text-slate-900': displayFullScreenMenu === false,
+            'bg-white text-slate-900': displayFullScreenMenu === false,
             'text-white': displayFullScreenMenu,
           }
         )}

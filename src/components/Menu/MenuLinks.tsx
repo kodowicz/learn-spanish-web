@@ -1,5 +1,6 @@
-import { Link } from '@tanstack/react-router';
+import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
+import cx from 'classnames';
 
 type MenuLinksProps = {
   onLinkClick?: () => void;
@@ -54,16 +55,17 @@ function MenuButton({ label, path, onClick }: MenuButtonProps) {
       }
       transition={{ duration: 0.2 }}
     >
-      <Link
-        activeProps={{ className: 'text-cyan-500 md:text-indigo-500' }}
-        className="transition-colors"
+      <NavLink
+        className={({ isActive }) =>
+          cx('transition-colors', {
+            'text-cyan-500 md:text-indigo-500': isActive,
+          })
+        }
         to={path}
-        search={{}}
-        params={{}}
         onClick={onClick}
       >
         {label}
-      </Link>
+      </NavLink>
     </motion.div>
   );
 }
