@@ -1,14 +1,5 @@
 import { usePublicSets } from '@/queries/usePublicSets';
-import { Set } from '@/queries/types';
-
-function ViewSet({ set }: { set: Set }) {
-  return (
-    <div>
-      <h2>{set.title}</h2>
-      <p>{set.author.username} | {set.terms.length}</p>
-    </div>
-  );
-}
+import { ViewSet } from '@/components/ViewSet';
 
 export function Home() {
   const { isLoading, data } = usePublicSets();
@@ -17,10 +8,12 @@ export function Home() {
 
   return (
     <>
-      {data?.map(set => 
+      {data?.map(({ id, title, author, terms }) => 
         <ViewSet
-          key={set.id}
-          set={set}
+          key={id}
+          title={title}
+          author={author.username}
+          termsCount={terms.length}
         />
       )}
     </>
