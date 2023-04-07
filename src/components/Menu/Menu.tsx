@@ -3,6 +3,10 @@ import { AnimatePresence, motion } from 'framer-motion';
 import { MenuLinks } from './MenuLinks';
 import { Fade as Hamburger } from 'hamburger-react';
 import { useRouter } from '@tanstack/react-router';
+import cx from 'classnames';
+import color from 'tailwindcss/colors';
+
+export const MOBILE_BREAKPOINT = 768;
 
 const getRouteName = (path: string) => {
   if (path.includes('/search')) return 'Search';
@@ -15,7 +19,7 @@ const getRouteName = (path: string) => {
 export function Menu() {
   const [displayFullScreenMenu, setFullScreenMenuVisible] = useState(false);
   const [displayMobileNav, setMobileNavVisible] = useState(
-    window.innerWidth < 768
+    window.innerWidth < MOBILE_BREAKPOINT
   );
 
   const router = useRouter();
@@ -23,7 +27,7 @@ export function Menu() {
 
   useEffect(() => {
     const handleResize = () => {
-      const isMobileBreakpoint = window.innerWidth < 768;
+      const isMobileBreakpoint = window.innerWidth < MOBILE_BREAKPOINT;
 
       setMobileNavVisible(isMobileBreakpoint);
     };
@@ -54,11 +58,14 @@ export function Menu() {
   return (
     <div>
       <header
-        className="fixed inset-x-0 top-0 z-10 flex h-[54px] items-center justify-center px-4 text-slate-900 transition-colors md:h-[60px] md:px-8"
-        style={{
-          backgroundColor: !displayFullScreenMenu ? '#ffffff' : undefined,
-          color: !displayFullScreenMenu ? '#0f172a' : '#ffffff',
-        }}
+        className={cx(
+          'fixed inset-x-0 top-0 z-10 flex h-[54px] items-center justify-center px-4 text-slate-900 transition-colors md:h-[60px] md:px-8',
+          {
+            'bg-white': displayFullScreenMenu === false,
+            'text-slate-900': displayFullScreenMenu === false,
+            'text-white': displayFullScreenMenu,
+          }
+        )}
       >
         {displayMobileNav ? (
           <>
@@ -67,7 +74,7 @@ export function Menu() {
             </span>
             <div className="absolute right-4">
               <Hamburger
-                color={!displayFullScreenMenu ? '#0f172a' : '#ffffff'}
+                color={!displayFullScreenMenu ? color.slate[900] : color.white}
                 toggled={displayFullScreenMenu}
                 onToggle={handleFullScreenMenuVisibility}
                 size={28}
