@@ -1,7 +1,6 @@
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { Background } from '@/components/Background';
 import { Layout } from '@/components/Layout';
-import { ensurePublicSets } from '@/queries/usePublicSets';
 import { Menu } from '@/components/Menu';
 
 const Home = async () => {
@@ -29,7 +28,6 @@ export const router = createBrowserRouter([
       {
         path: '/',
         lazy: Home,
-        loader: ensurePublicSets,
       },
       {
         path: '/search',

@@ -1,6 +1,5 @@
 import { useQuery } from '@tanstack/react-query';
 
-import { queryClient } from '@/lib/react-query';
 import { axios } from '@/lib/axios';
 import { Set } from './types';
 
@@ -12,11 +11,4 @@ function fetchPublicSets(): Promise<Array<Set>> {
 
 export function usePublicSets() {
   return useQuery(queryKey, fetchPublicSets);
-}
-
-export async function ensurePublicSets() {
-  return (
-    queryClient.getQueriesData(queryKey) ??
-    (await queryClient.fetchQuery(queryKey, fetchPublicSets))
-  );
 }
