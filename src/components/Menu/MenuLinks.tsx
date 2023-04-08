@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import cx from 'classnames';
+import { MOBILE_BREAKPOINT } from './Menu';
 
 type MenuLinksProps = {
   onLinkClick?: () => void;
@@ -51,7 +52,9 @@ function MenuButton({ label, path, onClick }: MenuButtonProps) {
     <motion.div
       className="mb-10 text-xl font-semibold antialiased last:mr-0 md:mb-0 md:mr-10 md:text-lg"
       whileHover={
-        window.innerWidth < 768 ? { translateX: 2 } : { translateY: -2 }
+        window.innerWidth < MOBILE_BREAKPOINT
+          ? { translateX: 2 }
+          : { translateY: -2 }
       }
       transition={{ duration: 0.2 }}
     >
