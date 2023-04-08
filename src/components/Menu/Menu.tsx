@@ -5,8 +5,7 @@ import { Fade as Hamburger } from 'hamburger-react';
 import cx from 'classnames';
 import color from 'tailwindcss/colors';
 import { useLocation } from 'react-router-dom';
-
-export const MOBILE_BREAKPOINT = 768;
+import { MOBILE_BREAKPOINT } from '@/constants/breakpoints';
 
 const getRouteName = (path: string) => {
   if (path.includes('/search')) return 'Search';

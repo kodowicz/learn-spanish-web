@@ -1,7 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import { motion } from 'framer-motion';
 import cx from 'classnames';
-import { MOBILE_BREAKPOINT } from './Menu';
+import { MOBILE_BREAKPOINT } from '@/constants/breakpoints';
 
 type MenuLinksProps = {
   onLinkClick?: () => void;
