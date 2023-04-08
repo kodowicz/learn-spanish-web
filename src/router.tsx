@@ -1,13 +1,14 @@
-import { lazy } from 'react';
 import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { Background } from '@/components/Background';
 import { Layout } from '@/components/Layout';
 import { ensurePublicSets } from '@/queries/usePublicSets';
 import { Menu } from '@/components/Menu';
 
-const Home = lazy(() =>
-  import('./pages/Home').then((module) => ({ default: module.Home }))
-);
+const Home = async () => {
+  const { Home } = await import('./pages/Home');
+
+  return { Component: Home };
+};
 
 export const router = createBrowserRouter([
   {
@@ -27,20 +28,20 @@ export const router = createBrowserRouter([
     children: [
       {
         path: '/',
-        element: <Home />,
+        lazy: Home,
         loader: ensurePublicSets,
       },
       {
         path: '/search',
-        element: <Home />,
+        lazy: Home,
       },
       {
         path: '/create',
-        element: <Home />,
+        lazy: Home,
       },
       {
         path: '/profile',
-        element: <Home />,
+        lazy: Home,
       },
     ],
   },

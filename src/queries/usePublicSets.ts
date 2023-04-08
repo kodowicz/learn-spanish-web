@@ -14,6 +14,9 @@ export function usePublicSets() {
   return useQuery(queryKey, fetchPublicSets);
 }
 
-export function ensurePublicSets() {
-  return queryClient.ensureQueryData(queryKey, fetchPublicSets);
+export async function ensurePublicSets() {
+  return (
+    queryClient.getQueriesData(queryKey) ??
+    (await queryClient.fetchQuery(queryKey, fetchPublicSets))
+  );
 }
