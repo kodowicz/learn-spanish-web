@@ -2,10 +2,13 @@
 @tailwind components;
 @tailwind utilities;
 
-body {
-  @apply bg-purple;
-}
-
-html, body, #root, #root>div {
-  height: 100%
+@layer base {
+  html {
+    font-family: "Open Sans", system-ui, sans-serif;
+  }
+  
+  body {
+    @apply bg-purple;
+    @apply antialiased;
+  }
 }

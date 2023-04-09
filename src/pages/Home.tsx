@@ -8,14 +8,14 @@ export function Home() {
 
   return (
     <>
-      {data?.map(({ id, title, author, terms }) => 
+      {data?.map(({ id, title, author, terms }) => (
         <ViewSet
           key={id}
           title={title}
           author={author.username}
           termsCount={terms.length}
         />
-      )}
+      ))}
     </>
   );
 }

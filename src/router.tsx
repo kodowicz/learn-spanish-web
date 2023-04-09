@@ -1,35 +1,46 @@
-import { lazy } from 'react';
-
-import {
-  Outlet,
-  createReactRouter,
-  createRouteConfig,
-} from '@tanstack/react-router';
-
+import { createBrowserRouter, Outlet } from 'react-router-dom';
 import { Background } from '@/components/Background';
-import { Layout } from './components/Layout';
-import { ensurePublicSets } from '@/queries/usePublicSets';
+import { Layout } from '@/components/Layout';
+import { Menu } from '@/components/Menu';
 
-const Home = lazy(() => import('./pages/Home').then(module => ({ default: module.Home })));
+const Home = async () => {
+  const { Home } = await import('./pages/Home');
 
-const rootRoute = createRouteConfig({
-  component: () => (
-    <>
-      <Background>
-        <Layout>
-          <Outlet />
-        </Layout>
-      </Background>
-    </>
-  )
-});
+  return { Component: Home };
+};
 
-const indexRoute = rootRoute.createRoute({
-  path: '/',
-  component: Home,
-  loader: ensurePublicSets
-});
-
-const routeConfig = rootRoute.addChildren([indexRoute]);
-
-export const router = createReactRouter({ routeConfig });
+export const router = createBrowserRouter([
+  {
+    path: '/',
+    element: (
+      <div>
+        <Background>
+          <Menu />
+          <div className="mt-[54px] h-full overflow-scroll md:mt-[80px]">
+            <Layout>
+              <Outlet />
+            </Layout>
+          </div>
+        </Background>
+      </div>
+    ),
+    children: [
+      {
+        path: '/',
+        lazy: Home,
+      },
+      {
+        path: '/search',
+        lazy: Home,
+      },
+      {
+        path: '/create',
+        lazy: Home,
+      },
+      {
+        path: '/profile',
+        lazy: Home,
+      },
+    ],
+  },
+]);
