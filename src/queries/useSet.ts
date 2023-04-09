@@ -10,9 +10,8 @@ function fetchSet(id: string): Promise<Set> {
 }
 
 export function useSet(id: string | undefined) {
-  return useQuery(
-    queryKey(id!),
-    () => fetchSet(id!),
-    { enabled: !!id }
-  );
+  return useQuery(queryKey(id ?? ''), () => fetchSet(id ?? ''), {
+    enabled: !!id,
+    retry: false,
+  });
 }
