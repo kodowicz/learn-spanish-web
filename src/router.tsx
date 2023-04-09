@@ -9,6 +9,12 @@ const Home = async () => {
   return { Component: Home };
 };
 
+const ViewSet = async () => {
+  const { ViewSet } = await import('./pages/ViewSet');
+
+  return { Component: ViewSet };
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -41,6 +47,10 @@ export const router = createBrowserRouter([
         path: '/profile',
         lazy: Home,
       },
+      {
+        path: '/sets/:id',
+        lazy: ViewSet,
+      }
     ],
   },
 ]);
