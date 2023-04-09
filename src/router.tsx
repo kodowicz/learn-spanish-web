@@ -50,7 +50,7 @@ export const router = createBrowserRouter([
       {
         path: '/sets/:id',
         lazy: ViewSet,
-      }
+      },
     ],
   },
 ]);
