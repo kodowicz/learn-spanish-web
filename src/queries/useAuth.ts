@@ -3,8 +3,8 @@ import { configureAuth } from 'react-query-auth';
 import { axios } from '@/lib/axios';
 import { LoginCredentials, RegisterCredentials } from './types';
 
-function userFn(id: unknown) {
-  return axios.get(`/api/v1/users/${id}`);
+function userFn() {
+  return axios.get('/api/v1/users/profile');
 }
 
 function registerFn(credentials: RegisterCredentials) {
