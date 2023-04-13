@@ -73,8 +73,10 @@ const RegisterForm = () => {
 
 const LoginForm = () => {
   const initialCredentials = {
-    email: '',
-    password: '',
+    user: {
+      email: '',
+      password: '',
+    },
   };
 
   const [credentials, setCredentials] =
@@ -83,8 +85,10 @@ const LoginForm = () => {
 
   const onChange = (event: ChangeEvent<HTMLInputElement>) =>
     setCredentials((credentials) => ({
-      ...credentials,
-      [event.target.name]: event.target.value,
+      user: {
+        ...credentials.user,
+        [event.target.name]: event.target.value,
+      },
     }));
 
   return (
