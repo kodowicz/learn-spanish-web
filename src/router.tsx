@@ -15,6 +15,12 @@ const ViewSet = async () => {
   return { Component: ViewSet };
 };
 
+const Authentication = async () => {
+  const { Authentication } = await import('./pages/Authentication');
+
+  return { Component: Authentication };
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -46,6 +52,10 @@ export const router = createBrowserRouter([
       {
         path: '/profile',
         lazy: Home,
+      },
+      {
+        path: '/sign-in',
+        lazy: Authentication,
       },
       {
         path: '/sets/:id',
