@@ -3,14 +3,14 @@ import { ChangeEvent, useState } from 'react';
 import { LoginCredentials } from '@/queries/types';
 import { useLogin } from '@/queries/useAuth';
 
-export function Login() {
-  const initialCredentials = {
-    user: {
-      email: '',
-      password: '',
-    },
-  };
+const initialCredentials = {
+  user: {
+    email: '',
+    password: '',
+  },
+};
 
+export function Login() {
   const [credentials, setCredentials] =
     useState<LoginCredentials>(initialCredentials);
   const login = useLogin();

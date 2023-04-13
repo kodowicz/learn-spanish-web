@@ -3,13 +3,13 @@ import { ChangeEvent, useState } from 'react';
 import { RegisterCredentials } from '@/queries/types';
 import { useRegister } from '@/queries/useAuth';
 
-export function Register() {
-  const initialCredentials = {
-    username: '',
-    email: '',
-    password: '',
-  };
+const initialCredentials = {
+  username: '',
+  email: '',
+  password: '',
+};
 
+export function Register() {
   const [credentials, setCredentials] =
     useState<RegisterCredentials>(initialCredentials);
   const register = useRegister();
