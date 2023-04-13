@@ -22,4 +22,4 @@ export function Authentication() {
       )}
     </div>
   );
-};
+}

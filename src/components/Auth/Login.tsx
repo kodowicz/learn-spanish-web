@@ -48,4 +48,4 @@ export function Login() {
       </button>
     </form>
   );
-};
+}
