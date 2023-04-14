@@ -21,6 +21,12 @@ const Authentication = async () => {
   return { Component: Authentication };
 };
 
+const Profile = async () => {
+  const { Profile } = await import('./pages/Profile');
+
+  return { Component: Profile };
+};
+
 export const router = createBrowserRouter([
   {
     path: '/',
@@ -51,7 +57,7 @@ export const router = createBrowserRouter([
       },
       {
         path: '/profile',
-        lazy: Home,
+        lazy: Profile,
       },
       {
         path: '/sign-in',
