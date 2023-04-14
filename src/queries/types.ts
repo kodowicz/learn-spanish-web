@@ -29,3 +29,11 @@ export interface RegisterCredentials {
   username: string;
   password: string;
 }
+
+export interface ResponseError {
+  response: {
+    data: {
+      error: string;
+    };
+  };
+}
