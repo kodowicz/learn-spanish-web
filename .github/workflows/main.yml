@@ -29,6 +29,9 @@ jobs:
     needs: [setup]
 
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+
       - name: Type check
         run: npm run typecheck
 
@@ -38,5 +41,8 @@ jobs:
     needs: [setup]
 
     steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+
       - name: Lint
         run: npm run lint
