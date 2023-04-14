@@ -7,7 +7,5 @@ export function Profile() {
 
   if (error) return <h1>{error.response.data.error}</h1>;
 
-  return (
-    <h1>hello {data?.username}</h1>
-  )
+  return <h1>hello {data?.username}</h1>;
 }
