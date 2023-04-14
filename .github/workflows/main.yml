@@ -1,6 +1,6 @@
-name: Continuous Integration
+name: Lint and Types Check
 
-on: [push]
+on: [push, workflow_call]
 
 jobs:
   typecheck:
@@ -11,14 +11,8 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v3
 
-      - name: Restore cached node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install dependencies
-        run: npm install
+        uses: ./.github/actions/setup
 
       - name: Type check
         run: npm run typecheck
@@ -31,17 +25,8 @@ jobs:
       - name: Checkout project
         uses: actions/checkout@v3
 
-      - name: Restore cached node modules
-        uses: actions/cache@v3
-        with:
-          path: '**/node_modules'
-          key: ${{ runner.os }}-modules-${{ hashFiles('**/package-lock.json') }}
-
       - name: Install dependencies
-        run: npm install
-
-      - name: Type check
-        run: npm run typecheck
+        uses: ./.github/actions/setup
 
       - name: Lint
         run: npm run lint
