@@ -1,0 +1,32 @@
+name: Lint and Types Check
+
+on: [push, workflow_call]
+
+jobs:
+  typecheck:
+    name: Check types
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: ./.github/actions/setup
+
+      - name: Type check
+        run: npm run typecheck
+
+  lint:
+    name: Run lint
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout project
+        uses: actions/checkout@v3
+
+      - name: Install dependencies
+        uses: ./.github/actions/setup
+
+      - name: Lint
+        run: npm run lint
